@@ -1,7 +1,102 @@
-import React from "react";
+import React, {useState} from "react";
 import './Main.css'
 
 const Main = () => {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const dates = ['2022-03-01', '2022-03-02','2022-03-03','2022-03-04','2022-03-05'];
+    const listDays = ['화요일','수요일','목요일','금요일','토요일'];
+    const isHoliday = ['아니오'];
+    let brr = dates.map((value, key) => <td>{value}</td>);
+    const initSelectedDates = [
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''},
+        {date: '', day:'', publicHoliday:''}
+    ]
+    const [selectedDates, setSelectedDates] = useState(initSelectedDates);
+
+    const onClickTest = () => {
+        const prevSelectedDates = selectedDates;
+        let isUpdated = false
+        const addedSelectedDates = prevSelectedDates.map(
+            selectedDate => {
+                if(isUpdated === false && selectedDate.date === ''){
+                    selectedDate.day =
+                       // dates.map((resultDates, index) => console.log(resultDates));
+
+                    selectedDate.date = '화요일'
+                    selectedDate.publicHoliday = '아니오'
+                    isUpdated = true
+                    //
+                    // {dates.
+                    // map((resultDates, index) =>
+                    //     <tr key={index}>
+                    //         selectedDate.day = <td>{resultDates}</td>
+                    //         <td>{resultDates}</td>
+                    //         <td>{resultDates}</td>
+                    //     </tr>
+                    // )}
+
+                    {dates.map((resultDates, index) => (
+                        <tr>
+                            {brr}
+                        </tr>
+                    ))}
+                }
+
+                return selectedDate
+            }
+        )
+
+        setSelectedDates(addedSelectedDates);
+    }
+
     return (
         <>
             <div id="header_box">
@@ -13,19 +108,16 @@ const Main = () => {
                 <button id="select_date_btn"><span id="select_date_star">*</span> 기간</button>
                 <div id="start_date_box"><span class="d_box">D</span></div> <span id="from_til">~</span>
                 <div id="end_date_box"><span class="d_box">D</span></div><button id="search_btn">조회</button>
+                <button id="search_btn" onClick={onClickTest}>테스트</button>
             </div>
             <div id="selected_year_month">2020년 5월</div>
             <div id="calendar_table">
                 <table id="calender_table_result">
                     <thead>
                         <tr>
-                            <th>Sun</th>
-                            <th>Mon</th>
-                            <th>Tue</th>
-                            <th>Wed</th>
-                            <th>Thu</th>
-                            <th>Fri</th>
-                            <th>Sat</th>
+                            {days.map((day, index) => {
+                                        return <th key={index}>{day}</th>
+                                    })}
                         </tr>
                     </thead>
                     <tbody>
@@ -115,256 +207,22 @@ const Main = () => {
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            {/*{dates.*/}
+                            {/*    map((resultDates, index) =>*/}
+                            {/*    <tr key={index}>*/}
+                            {/*        <td>{resultDates}</td>*/}
+                            {/*        <td>{resultDates}</td>*/}
+                            {/*        <td>{resultDates}</td>*/}
+                            {/*    </tr>*/}
+                            {/*)}*/}
+                            {selectedDates
+                                .map((selectedDate, index) =>
+                                    <tr key={index}>
+                                        <td>{selectedDate.date}</td>
+                                        <td>{selectedDate.day}</td>
+                                        <td>{selectedDate.publicHoliday}</td>
+                                    </tr>
+                                )}
                             </tbody>
                         </table>
                         <div id="page_div">
